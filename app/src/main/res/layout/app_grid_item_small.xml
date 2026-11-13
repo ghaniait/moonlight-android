@@ -4,13 +4,15 @@
     android:layout_width="110dp"
     android:layout_height="143dp">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
-        app:cardCornerRadius="6dp"
-        app:cardElevation="4dp"
-        app:cardMaxElevation="4dp">
+        app:cardBackgroundColor="@color/nb_mid"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/nb_glass_stroke"
+        app:strokeWidth="1dp">
 
         <ImageView
             android:id="@+id/grid_image"
@@ -36,12 +38,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/grid_overlay"
-                android:layout_margin="5dp"
+                android:layout_margin="6dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/adventor_bold"
                 android:gravity="center|center_vertical"
-                android:background="#00FFFFFF"
                 android:textAlignment="center"
-                android:textSize="14sp" />
+                android:textColor="@color/nb_text"
+                android:textSize="11sp" />
         </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </RelativeLayout>

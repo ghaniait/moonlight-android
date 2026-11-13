@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/nbDock"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/nb_dock_bg"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/dockComputers"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center"
+            android:background="@drawable/nb_dock_item"
+            android:contentDescription="@string/nb_dock_computers"
+            android:padding="11dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/nb_ic_monitor"
+            android:tint="@color/nb_text2" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/dockGames"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center"
+            android:background="@drawable/nb_dock_active"
+            android:contentDescription="@string/nb_dock_games"
+            android:padding="11dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/nb_ic_gamepad"
+            android:tint="@color/nb_text" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/dockAdd"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center"
+            android:background="@drawable/nb_dock_item"
+            android:contentDescription="@string/title_add_pc"
+            android:padding="11dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/nb_ic_plus"
+            android:tint="@color/nb_text2" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <ImageButton
+            android:id="@+id/dockSettings"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center"
+            android:background="@drawable/nb_dock_item"
+            android:contentDescription="@string/nb_settings"
+            android:padding="11dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/nb_ic_gear"
+            android:tint="@color/nb_text2" />
+    </FrameLayout>
+
+</LinearLayout>

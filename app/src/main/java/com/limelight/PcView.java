@@ -185,6 +185,25 @@ public class PcView extends AppCompatActivity implements AdapterFragmentCallback
             }
         });
 
+        // Dock "Games": open the game list of the first computer that is online and paired
+        View dockGames = findViewById(R.id.dockGames);
+        if (dockGames != null) {
+            dockGames.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    for (int i = 0; i < pcGridAdapter.getCount(); i++) {
+                        ComputerObject candidate = (ComputerObject) pcGridAdapter.getItem(i);
+                        if (candidate.details.state == ComputerDetails.State.ONLINE &&
+                                candidate.details.pairState == PairState.PAIRED) {
+                            doAppList(candidate.details, false, false);
+                            return;
+                        }
+                    }
+                    Toast.makeText(PcView.this, R.string.nb_toast_no_games, Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
         // Amazon review didn't like the help button because the wiki was not entirely
         // navigable via the Fire TV remote (though the relevant parts were). Let's hide
         // it on Fire TV.
@@ -424,37 +443,19 @@ public class PcView extends AppCompatActivity implements AdapterFragmentCallback
 
         menu.setHeaderTitle(headerTitle);
 
-        // Inflate the context menu
+        // Inflate the context menu (simplified edition: only the essential actions)
         if (computer.details.state == ComputerDetails.State.OFFLINE ||
             computer.details.state == ComputerDetails.State.UNKNOWN) {
             menu.add(Menu.NONE, WOL_ID, 1, getResources().getString(R.string.pcview_menu_send_wol));
-            menu.add(Menu.NONE, GAMESTREAM_EOL_ID, 2, getResources().getString(R.string.pcview_menu_eol));
         }
         else if (computer.details.pairState != PairState.PAIRED) {
-            menu.add(Menu.NONE, PAIR_ID_OTP, 1, getResources().getString(R.string.pcview_menu_pair_pc_otp));
             menu.add(Menu.NONE, PAIR_ID, 2, getResources().getString(R.string.pcview_menu_pair_pc));
-            if (computer.details.nvidiaServer) {
-                menu.add(Menu.NONE, GAMESTREAM_EOL_ID, 3, getResources().getString(R.string.pcview_menu_eol));
-            } else {
-                menu.add(Menu.NONE, OPEN_MANAGEMENT_PAGE_ID, 3, getResources().getString(R.string.pcview_menu_open_management_page));
-            }
         }
-        else {
-            if (computer.details.runningGameId != 0) {
-                menu.add(Menu.NONE, RESUME_ID, 1, getResources().getString(R.string.applist_menu_resume));
-                menu.add(Menu.NONE, QUIT_ID, 2, getResources().getString(R.string.applist_menu_quit));
-            }
-
-            if (computer.details.nvidiaServer) {
-                menu.add(Menu.NONE, GAMESTREAM_EOL_ID, 3, getResources().getString(R.string.pcview_menu_eol));
-            } else {
-                menu.add(Menu.NONE, OPEN_MANAGEMENT_PAGE_ID, 3, getResources().getString(R.string.pcview_menu_open_management_page));
-            }
-
-            menu.add(Menu.NONE, FULL_APP_LIST_ID, 4, getResources().getString(R.string.pcview_menu_app_list));
+        else if (computer.details.runningGameId != 0) {
+            menu.add(Menu.NONE, RESUME_ID, 1, getResources().getString(R.string.applist_menu_resume));
+            menu.add(Menu.NONE, QUIT_ID, 2, getResources().getString(R.string.applist_menu_quit));
         }
 
-        menu.add(Menu.NONE, TEST_NETWORK_ID, 5, getResources().getString(R.string.pcview_menu_test_network));
         menu.add(Menu.NONE, DELETE_ID, 6, getResources().getString(R.string.pcview_menu_delete_pc));
         menu.add(Menu.NONE, VIEW_DETAILS_ID, 7,  getResources().getString(R.string.pcview_menu_details));
     }

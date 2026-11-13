@@ -3,10 +3,13 @@
     android:id="@+id/fragmentView"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:numColumns="auto_fit"
+    android:clipToPadding="false"
     android:columnWidth="170dp"
-    android:stretchMode="spacingWidthUniform"
+    android:drawSelectorOnTop="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    android:clipToPadding="false"
-    android:gravity="center"/>
+    android:gravity="center"
+    android:listSelector="@drawable/nb_poster_selector"
+    android:numColumns="auto_fit"
+    android:paddingBottom="8dp"
+    android:stretchMode="spacingWidthUniform" />

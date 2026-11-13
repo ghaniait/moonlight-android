@@ -1,4 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="profileAccent">#FF4081</color>
+
+    <!-- Nebula palette -->
+    <color name="nb_deep">#140B33</color>
+    <color name="nb_mid">#2B1566</color>
+    <color name="nb_low">#4B2BA0</color>
+    <color name="nb_mag">#FF5FA2</color>
+    <color name="nb_vio">#8B5CF6</color>
+    <color name="nb_cyan">#4DE1E8</color>
+    <color name="nb_text">#FFFFFF</color>
+    <color name="nb_text2">#D6CFF5</color>
+    <color name="nb_hint">#A79FD8</color>
+    <color name="nb_outline">#7468C4</color>
+    <color name="nb_error">#FF8FA3</color>
+
+    <!-- Glass (translucent white over the violet background) -->
+    <color name="nb_ripple">#33FFFFFF</color>
+    <color name="nb_glass_hi">#29FFFFFF</color>
+    <color name="nb_glass_lo">#12FFFFFF</color>
+    <color name="nb_glass_stroke">#47FFFFFF</color>
+    <color name="nb_dock_fill">#730C0626</color>
+    <color name="nb_badge_fill">#D90C0626</color>
 </resources>

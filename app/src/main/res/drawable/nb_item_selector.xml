@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Focus / press highlight for grid items (keyboard, D-pad and touch) -->
+<inset xmlns:android="http://schemas.android.com/apk/res/android"
+    android:insetBottom="6dp"
+    android:insetLeft="6dp"
+    android:insetRight="6dp"
+    android:insetTop="6dp">
+    <selector>
+        <item android:state_pressed="true">
+            <shape android:shape="rectangle">
+                <solid android:color="@color/nb_ripple" />
+                <corners android:radius="30dp" />
+            </shape>
+        </item>
+        <item android:state_focused="true">
+            <shape android:shape="rectangle">
+                <solid android:color="#1A4DE1E8" />
+                <stroke
+                    android:width="2dp"
+                    android:color="@color/nb_cyan" />
+                <corners android:radius="30dp" />
+            </shape>
+        </item>
+        <item>
+            <shape android:shape="rectangle">
+                <solid android:color="@android:color/transparent" />
+            </shape>
+        </item>
+    </selector>
+</inset>

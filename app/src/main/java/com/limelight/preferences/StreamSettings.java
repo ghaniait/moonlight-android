@@ -24,6 +24,7 @@ import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceGroup;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
@@ -956,6 +957,40 @@ public class StreamSettings extends AppCompatActivity {
                     }
                 });
             }
+
+            // Simplified edition: only the essential settings are shown
+            applyBasicMode(screen);
+        }
+
+        // Keys of the settings that stay visible in the simplified edition. Every other setting
+        // keeps its default value from preferences.xml and its code is untouched, so bringing a
+        // setting back is just a matter of adding its key to this list.
+        private static final java.util.Set<String> BASIC_VISIBLE_KEYS = new java.util.HashSet<>(Arrays.asList(
+                "list_resolution",
+                "list_fps",
+                "seekbar_bitrate_kbps",
+                "video_format",
+                "list_audio_config",
+                "mouse_mode_list",
+                "checkbox_show_onscreen_controls"
+        ));
+
+        // Hides every preference that is not in BASIC_VISIBLE_KEYS, and every category left empty.
+        // Returns true when at least one preference of the group stays visible.
+        private boolean applyBasicMode(PreferenceGroup group) {
+            boolean anyVisible = false;
+            for (int i = 0; i < group.getPreferenceCount(); i++) {
+                Preference pref = group.getPreference(i);
+                boolean keep;
+                if (pref instanceof PreferenceGroup) {
+                    keep = applyBasicMode((PreferenceGroup) pref);
+                } else {
+                    keep = BASIC_VISIBLE_KEYS.contains(pref.getKey());
+                }
+                pref.setVisible(keep);
+                anyVisible |= keep;
+            }
+            return anyVisible;
         }
 
         private void removeEntryFromListAndSetValue(String resolutionPrefString, String entryToRemove, String nextDefault) {

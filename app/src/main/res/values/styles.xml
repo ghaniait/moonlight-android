@@ -14,15 +14,121 @@
         -->
     </style>
 
+    <!-- ===================== Nebula typography (TeX Gyre Adventor) ===================== -->
+    <style name="NbFont_Regular">
+        <item name="android:fontFamily">@font/adventor_regular</item>
+        <item name="fontFamily">@font/adventor_regular</item>
+    </style>
+    <style name="NbFont_Bold">
+        <item name="android:fontFamily">@font/adventor_bold</item>
+        <item name="fontFamily">@font/adventor_bold</item>
+    </style>
+
+    <style name="NbType_Body" parent="NbFont_Regular">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="NbType_BodyMedium" parent="NbFont_Regular">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="NbType_Caption" parent="NbFont_Regular">
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="NbType_Label" parent="NbFont_Bold">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="NbType_LabelSmall" parent="NbFont_Bold">
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="NbType_Title" parent="NbFont_Bold">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="NbType_TitleLarge" parent="NbFont_Bold">
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="NbType_Headline" parent="NbFont_Bold">
+        <item name="android:textSize">24sp</item>
+    </style>
+    <style name="NbType_ListItem" parent="NbFont_Regular">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/nb_text_primary_list</item>
+    </style>
+    <style name="NbType_ListItemSecondary" parent="NbFont_Regular">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/nb_text_secondary_list</item>
+    </style>
+
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:statusBarColor">#1A1A1A</item>
-        <item name="android:navigationBarColor">#1A1A1A</item>
-        <item name="android:colorBackground">#1A1A1A</item>
-        <item name="android:windowBackground">#1A1A1A</item>
+
+        <!-- Violet gradient window; the system bars are transparent so it shows through them -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:colorBackground">@color/nb_deep</item>
+        <item name="android:windowBackground">@drawable/nb_bg</item>
+
+        <!-- Color roles. Both the Material 2 and Material 3 names are set so that every
+             Android version (see values-v29) ends up with the same look. -->
+        <item name="colorPrimary">@color/nb_mag</item>
+        <item name="colorOnPrimary">@color/nb_deep</item>
+        <item name="colorPrimaryVariant">@color/nb_vio</item>
+        <item name="colorPrimaryContainer">@color/nb_low</item>
+        <item name="colorOnPrimaryContainer">@color/nb_text</item>
+        <item name="colorSecondary">@color/nb_cyan</item>
+        <item name="colorOnSecondary">@color/nb_deep</item>
+        <item name="colorSecondaryVariant">@color/nb_vio</item>
+        <item name="colorSecondaryContainer">@color/nb_low</item>
+        <item name="colorOnSecondaryContainer">@color/nb_text</item>
+        <item name="colorSurface">@color/nb_mid</item>
+        <item name="colorOnSurface">@color/nb_text</item>
+        <item name="colorSurfaceVariant">@color/nb_mid</item>
+        <item name="colorOnSurfaceVariant">@color/nb_text2</item>
+        <item name="colorSurfaceContainerLowest">@color/nb_deep</item>
+        <item name="colorSurfaceContainerLow">@color/nb_mid</item>
+        <item name="colorSurfaceContainer">@color/nb_mid</item>
+        <item name="colorSurfaceContainerHigh">@color/nb_mid</item>
+        <item name="colorSurfaceContainerHighest">@color/nb_mid</item>
+        <item name="colorOutline">@color/nb_outline</item>
+        <item name="colorOnBackground">@color/nb_text</item>
+        <item name="colorError">@color/nb_error</item>
+        <item name="colorOnError">@color/nb_deep</item>
+
+        <!-- Classic AppCompat / platform attributes (check boxes, switches, section titles...) -->
+        <item name="colorAccent">@color/nb_cyan</item>
+        <item name="android:colorAccent">@color/nb_cyan</item>
+        <item name="colorControlNormal">@color/nb_hint</item>
+        <item name="android:colorControlNormal">@color/nb_hint</item>
+        <item name="colorControlActivated">@color/nb_mag</item>
+        <item name="android:colorControlActivated">@color/nb_mag</item>
+        <item name="colorControlHighlight">@color/nb_ripple</item>
+        <item name="android:colorControlHighlight">@color/nb_ripple</item>
+        <item name="android:textColorPrimary">@color/nb_text_primary_list</item>
+        <item name="android:textColorSecondary">@color/nb_text_secondary_list</item>
+        <item name="android:textColorHint">@color/nb_hint</item>
+
+        <!-- Font: Adventor everywhere, with explicit sizes/weights for the common text roles -->
+        <item name="android:fontFamily">@font/adventor</item>
+        <item name="fontFamily">@font/adventor</item>
+        <item name="android:textAppearanceListItem">@style/NbType_ListItem</item>
+        <item name="android:textAppearanceListItemSecondary">@style/NbType_ListItemSecondary</item>
+        <item name="textAppearanceBodyLarge">@style/NbType_Body</item>
+        <item name="textAppearanceBodyMedium">@style/NbType_BodyMedium</item>
+        <item name="textAppearanceBodySmall">@style/NbType_Caption</item>
+        <item name="textAppearanceLabelLarge">@style/NbType_Label</item>
+        <item name="textAppearanceLabelMedium">@style/NbType_LabelSmall</item>
+        <item name="textAppearanceTitleMedium">@style/NbType_Title</item>
+        <item name="textAppearanceTitleLarge">@style/NbType_TitleLarge</item>
+        <item name="textAppearanceHeadlineSmall">@style/NbType_Headline</item>
+        <item name="textAppearanceBody1">@style/NbType_Body</item>
+        <item name="textAppearanceBody2">@style/NbType_BodyMedium</item>
+        <item name="textAppearanceCaption">@style/NbType_Caption</item>
+        <item name="textAppearanceButton">@style/NbType_Label</item>
+        <item name="textAppearanceSubtitle1">@style/NbType_Title</item>
+        <item name="textAppearanceSubtitle2">@style/NbType_Label</item>
+        <item name="textAppearanceHeadline5">@style/NbType_Headline</item>
+        <item name="textAppearanceHeadline6">@style/NbType_TitleLarge</item>
     </style>
 
     <style name="StreamBaseTheme" parent="AppBaseTheme">
@@ -49,12 +155,8 @@
         <item name="colorButtonNormal">@android:color/white</item>
     </style>
 
-    <style name="SettingsTheme" parent="Theme.AppCompat.NoActionBar">
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:colorBackground">@android:color/transparent</item>
-        <item name="android:windowBackground">@android:color/transparent</item>
-    </style>
+    <!-- Settings use the same look as the rest of the app on every Android version -->
+    <style name="SettingsTheme" parent="AppTheme" />
 
     <style name="ExternalDisplayControllerTheme" parent="AppTheme">
         <item name="android:statusBarColor">@android:color/black</item>

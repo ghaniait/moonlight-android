@@ -1,6 +1,7 @@
 package com.limelight.grid;
 
 import android.content.Context;
+import androidx.core.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -51,7 +52,7 @@ public class PcGridAdapter extends GenericGridAdapter<PcView.ComputerObject> {
 
     @Override
     public void populateView(View parentView, ImageView imgView, RelativeLayout gridMask, ProgressBar prgView, TextView txtView, ImageView overlayView, PcView.ComputerObject obj) {
-        imgView.setImageResource(R.drawable.ic_computer);
+        imgView.setImageResource(R.drawable.nb_ic_monitor);
         if (obj.details.state == ComputerDetails.State.ONLINE) {
             imgView.setAlpha(1.0f);
         }
@@ -72,6 +73,27 @@ public class PcGridAdapter extends GenericGridAdapter<PcView.ComputerObject> {
         }
         else {
             txtView.setAlpha(0.4f);
+        }
+
+        // Status line shown under the computer name (Nebula layout)
+        TextView statusView = parentView.findViewById(R.id.grid_status);
+        if (statusView != null) {
+            boolean paired = obj.details.pairState == PairingManager.PairState.PAIRED;
+            if (obj.details.state == ComputerDetails.State.UNKNOWN) {
+                statusView.setText(R.string.nb_status_searching);
+            }
+            else if (obj.details.state == ComputerDetails.State.OFFLINE) {
+                statusView.setText(R.string.nb_status_offline);
+            }
+            else if (!paired) {
+                statusView.setText(R.string.nb_status_pair);
+            }
+            else {
+                statusView.setText(R.string.nb_status_online);
+            }
+            boolean ready = obj.details.state == ComputerDetails.State.ONLINE && paired;
+            statusView.setTextColor(ContextCompat.getColor(statusView.getContext(),
+                    ready ? R.color.nb_cyan : R.color.nb_text2));
         }
 
         if (obj.details.state == ComputerDetails.State.OFFLINE) {
